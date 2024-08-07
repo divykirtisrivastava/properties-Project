@@ -11,7 +11,7 @@ import AdminLayout from './AdminLayout.jsx'
 import AdminTable from './adminPannel/AdminTable.jsx'
 import ViewProduct from './adminPannel/ViewProduct.jsx'
 import UpdateProduct from './adminPannel/UpdateProduct.jsx'
-import AddProduct from './adminPannel/AddProduct.jsx'
+import AddProperty from './adminPannel/AddProperty.jsx'
 
 let router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +28,7 @@ let router = createBrowserRouter(
       <Route path='' element={<AdminTable/>} />
       <Route path='/admin/view/:id' element={<ViewProduct/>} />
       <Route path='/admin/update/:id' element={<UpdateProduct/>} />
-      <Route path='/admin/addProduct' element={<AddProduct/>} />
+      <Route path='/admin/addProduct' element={<AddProperty/>} />
     </Route>
 
     </>

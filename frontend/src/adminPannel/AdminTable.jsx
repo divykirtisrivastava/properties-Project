@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 export default function AdminTable() {
     let [data, setData] = useState([])
 
-    async function getData(){
-        let result = await axios.get('http://localhost:3000/api/getProduct')
+    async function getpropertylist(){
+        let result = await axios.get('http://localhost:3000/api/getpropertylist')
         setData(result.data)
     }
     useEffect(()=>{
-        getData()
+      getpropertylist()
     }, [])
 
    async function deleteData(id){
@@ -36,29 +36,35 @@ export default function AdminTable() {
                         scope="col"
                         className="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
                       >
-                        <span>Product Brand</span>
+                        <span>Name</span>
                       </th>
                       <th
                         scope="col"
                         className="px-12 py-3.5 text-left text-sm font-normal text-gray-700"
                       >
-                        Product Type
+                        Location
                       </th>
 
                       <th
                         scope="col"
                         className="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
                       >
-                        Product Price
+                       Type
                       </th>
                       
 
-                      {/* <th
+                      <th
                         scope="col"
                         className="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
                       >
-                        Product Rating
-                      </th> */}
+                        Price
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
+                      >
+                        Category
+                      </th>
                       <th
                         scope="col"
                         className="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
@@ -73,31 +79,34 @@ export default function AdminTable() {
                       <tr key={data.id}>
                         <td className="whitespace-nowrap px-4 py-4">
                           <div className="flex items-center">
-                            <div className="h-10 w-10 flex-shrink-0">
+                            {/* <div className="h-10 w-10 flex-shrink-0">
                               <img
                                 className="h-10 w-10 rounded-full object-cover"
                                 src={`http://localhost:3000/${data.image}`}
                                 alt="not found"
                               />
-                            </div>
+                            </div> */}
                             <div className="ml-4">
-                              <div className="text-sm font-medium text-gray-900">{data.productBrand}</div>
+                              <div className="text-sm font-medium text-gray-900">{data.name}</div>
                              
                             </div>
                           </div>
                         </td>
                         <td className="whitespace-nowrap px-12 py-4">
-                          <div className="text-sm text-gray-900 ">{data.productType}</div>
+                          <div className="text-sm text-gray-900 ">{data.location}</div>
                           
                         </td>
                         <td className="whitespace-nowrap px-4 py-4">
                           <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
-                           {data.productPrice}
+                           {data.type}
                           </span>
                         </td>
-                        {/* <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
-                          {data.productRating}
-                        </td> */}
+                        <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
+                          {data.price}
+                        </td>
+                        <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
+                          {data.category}
+                        </td>
                         <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
                         <Link
                         to={`/admin/view/${data.id}`}
