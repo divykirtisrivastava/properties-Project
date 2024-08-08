@@ -93,7 +93,7 @@ export default function Pricing() {
         {price.map((item, index) => (
           <div className='box shadow' key={index}>
             <div className='topbtn'>
-              <button className='btn3'>{item.best}</button>
+              <button className='btn1 bg-gradient-to-r from-red-900 to-red-700'>{item.best}</button>
             </div>
             <h3>{item.plan}</h3>
             <h1>
@@ -121,11 +121,11 @@ export default function Pricing() {
               })}
             </ul>
             <button
-              className='btn5'
-              style={{
-                background: item.plan === "Standard" ? "#27ae60" : "#fff",
-                color: item.plan === "Standard" ? "#fff" : "#27ae60",
-              }}
+              className='btn1 bg-gradient-to-r from-gray-900 to-gray-700'
+              // style={{
+              //   background: item.plan === "Standard" ? "#27ae60" : "#fff",
+              //   color: item.plan === "Standard" ? "#fff" : "#27ae60",
+              // }}
             >
               Start {item.plan}
             </button>

@@ -12,7 +12,7 @@ export default function Home() {
         <p style={{color:"white"}}>Find new & featured property located in your local city.</p>
       </div>
 
-          <form className='flexbox'>
+          <form className='flexbox formBox'>
             <div className='box'>
               <span>City/Street</span>
               <input type='text' placeholder='Location' />
@@ -28,7 +28,7 @@ export default function Home() {
             <div className='box'>
               <h4>Advance Filter</h4>
             </div>
-            <button className='btn1'>
+            <button className='btn1 bg-gradient-to-r from-gray-900 to-gray-700'>
              <Search/>
             </button>
           </form>

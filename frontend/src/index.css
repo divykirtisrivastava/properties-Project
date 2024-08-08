@@ -30,10 +30,17 @@ a {
 ul {
   list-style-type: none;
 }
-button {
+.btn1 {
   border-radius: 5px;
   padding: 17px 30px;
-  background: #0fa94f;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn1:hover {
+  border-radius: 5px;
+  padding: 17px 30px;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -86,6 +93,9 @@ h4 {
 }
 .shadow {
   box-shadow: 0 0 20px 0 rgb(112 121 138 / 18%);
+
+  border: 1px solid black;
+  border-radius: 5px;
 }
 .padding {
   padding: 40px 0;
@@ -279,7 +289,6 @@ img {
 
 
 .footerContact {
-  background-color: #27ae60;
   padding: 40px 0;
   color: #fff;
 }
@@ -359,12 +368,10 @@ header a {
   font-weight: 500;
 }
 header a:hover {
-  color: #27ae60;
 }
 header span {
   width: auto;
-  padding: 0px 6px;
-  background: #27ae60;
+  padding: 8px 6px;
   border-radius: 50px;
   color: #ffffff;
   margin-right: 4px;
@@ -412,9 +419,10 @@ header .toggle {
 
 .carousel-image {
   transition: opacity 1s ease-in-out;
-  opacity: 0;
+  opacity: 1;
 }
 
 .carousel-image.active {
   opacity: 1;
 }
+

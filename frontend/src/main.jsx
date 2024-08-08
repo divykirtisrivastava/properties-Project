@@ -12,6 +12,10 @@ import AdminTable from './adminPannel/AdminTable.jsx'
 import ViewProduct from './adminPannel/ViewProduct.jsx'
 import UpdateProduct from './adminPannel/UpdateProduct.jsx'
 import AddProperty from './adminPannel/AddProperty.jsx'
+import ClientLogin from './clientComponents/ClientLogin.jsx'
+import ClientRegister from './clientComponents/ClientRegister.jsx'
+import WishList from './clientComponents/WishList.jsx'
+import Wishlistview from './clientComponents/Wishlistview.jsx'
 
 let router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +25,10 @@ let router = createBrowserRouter(
       <Route path='/about' element={<Feachered/>}/>
       <Route path='/properties' element={<Propertiex/>}/>
       <Route path='/pricing' element={<Pricing/>}/>
+      <Route path='/signin' element={<ClientLogin/>}/>
+      <Route path='/register' element={<ClientRegister/>}/>
+      <Route path='/wishlist' element={<WishList/>}/>
+      <Route path='/viewProperty/:id' element={<Wishlistview/>}/>
 
     </Route>
 

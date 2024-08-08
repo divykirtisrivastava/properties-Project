@@ -18,8 +18,8 @@ export default function AdminTable() {
     let flag  =  confirm("Are U sure to delete")
 
      if(flag == true){
-      await axios.delete(`http://localhost:3000/api/deleteProduct/${id}`)
-      getData()
+      await axios.delete(`http://localhost:3000/api/deletepropertylist/${id}`)
+      getpropertylist()
      }
     }
   return (

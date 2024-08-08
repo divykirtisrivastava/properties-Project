@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import pic from '../images/logo.png'
 import { Link } from 'react-router-dom'
+import UserContext from '../context/UserContext'
 export const nav = [
     {
       text: "home",
@@ -21,7 +22,16 @@ export const nav = [
   ]
 export default function Navbar() {
   const [navList, setNavList] = useState(false)
+  let [data, setData] = useState('')
 
+  let {auth, logout, cartList} = useContext(UserContext)
+useEffect(()=>{
+  setData(auth.username)
+},[auth])
+function handleLogout(){
+  logout()
+  window.location.reload()
+}
   return (
    <>
       <header>
@@ -38,13 +48,22 @@ export default function Navbar() {
               ))}
             </ul>
           </div>
-          <div className='button flexbox'>
-            <h4>
-              <span>2</span> My List
-            </h4>
-            <button className='btn1'>
-              <i className='fa fa-sign-out'></i> Sign In
+          <div className='button flexbox gap-5'>
+            {cartList ? <Link to='wishlist'>
+              <span className='bg-gradient-to-r from-red-900 to-red-700'>{cartList}</span> My List
+            </Link> : ''}
+            {data ? <div className='flex gap-5'>
+            <div className='flex items-center gap-2'>
+              <img src={`http://localhost:3000/${data.image}`}  className='w-[50px] h-[50px] rounded-full' alt="" /> 
+              <p className='text-red-600 uppercase font-bold'>{data.fullname}</p>
+            </div>
+            <button onClick={handleLogout} className='p-2 text-white rounded-[15px] font-bold bg-gradient-to-r from-red-900 to-red-700'>
+              Log out
             </button>
+            </div>
+           : <Link className='btn1 bg-gradient-to-r from-gray-900 to-gray-700' to='/signin'>
+              Sign In
+            </Link>}
           </div>
 
           <div className='toggle'>

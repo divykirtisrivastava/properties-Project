@@ -26,7 +26,7 @@ async function handleSubmit(e){
     console.log(images[i])
     data.append('images', images[i]);
   }
-
+console.log(data)
   let result = await axios.post('http://localhost:3000/api/propertylistSave', data, {
     headers:{
       'Content-Type': "multipart/form-data"

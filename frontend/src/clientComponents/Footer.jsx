@@ -20,7 +20,7 @@ export const footer = [
 export default function Footer() {
   return (
     <>
-    <section className='footerContact'>
+    <section className='footerContact bg-gradient-to-r from-gray-900 to-gray-700'>
         <div className='container'>
           <div className='send flexbox'>
             <div className='text'>
@@ -42,7 +42,7 @@ export default function Footer() {
 
               <div className='input flexbox'>
                 <input type='text' placeholder='Email Address' />
-                <button>Subscribe</button>
+                <button className='bg-gradient-to-r from-red-900 to-red-700 p-4 rounded-[10px] ml-2'>Subscribe</button>
               </div>
             </div>
           </div>
