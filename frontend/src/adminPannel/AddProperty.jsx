@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import UserContext from '../context/UserContext'
 
 export default function AddProperty() {
+  let {adminAuth} = useContext(UserContext)
+
 
   let navigation =  useNavigate()
   let [name, setname] = useState("")
@@ -26,12 +29,15 @@ async function handleSubmit(e){
     console.log(images[i])
     data.append('images', images[i]);
   }
-console.log(data)
-  let result = await axios.post('http://localhost:3000/api/propertylistSave', data, {
+// console.log(data)
+ if(adminAuth.adminName){
+  let adminName = adminAuth.adminName.email.split('@')[0]  
+  let result = await axios.post(`http://localhost:3000/api/propertylistSave/${adminName}`, data, {
     headers:{
       'Content-Type': "multipart/form-data"
     }
   })
+ }
  navigation('/admin')
 }
 

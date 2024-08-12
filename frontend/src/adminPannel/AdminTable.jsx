@@ -1,13 +1,18 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import UserContext from '../context/UserContext'
 
 export default function AdminTable() {
     let [data, setData] = useState([])
+    let {adminAuth} = useContext(UserContext)
 
     async function getpropertylist(){
-        let result = await axios.get('http://localhost:3000/api/getpropertylist')
+      if(adminAuth.adminName){
+        let adminName = adminAuth.adminName.email.split('@')[0]  
+        let result = await axios.get(`http://localhost:3000/api/getadminpropertylist/${adminName}`)
         setData(result.data)
+      }
     }
     useEffect(()=>{
       getpropertylist()
@@ -18,7 +23,8 @@ export default function AdminTable() {
     let flag  =  confirm("Are U sure to delete")
 
      if(flag == true){
-      await axios.delete(`http://localhost:3000/api/deletepropertylist/${id}`)
+      let adminName = adminAuth.adminName.email.split('@')[0]  
+      await axios.delete(`http://localhost:3000/api/deletepropertylist/${id}/${adminName}`)
       getpropertylist()
      }
     }

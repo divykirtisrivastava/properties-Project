@@ -17,6 +17,10 @@ body {
   max-width: 80%;
   margin: auto;
 }
+.Admincontainer {
+  max-width: 95%;
+  margin: auto;
+}
 .flexbox {
   display: flex;
   justify-content: space-between;

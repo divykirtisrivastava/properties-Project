@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import pic from '../images/logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import UserContext from '../context/UserContext'
 export const nav = [
     {
@@ -17,21 +17,24 @@ export const nav = [
     },
     {
       text: "pricing",
-      path: "/pricing",
+      path: "/admin/pricing",
     }
   ]
 export default function Navbar() {
   const [navList, setNavList] = useState(false)
   let [data, setData] = useState('')
+  let navigation = useNavigate()
 
-  let {auth, logout, cartList} = useContext(UserContext)
+  let {auth,adminLogout, logout, cartList} = useContext(UserContext)
 useEffect(()=>{
   setData(auth.username)
+  adminLogout()
 },[auth])
 function handleLogout(){
   logout()
   window.location.reload()
 }
+
   return (
    <>
       <header>
@@ -64,8 +67,10 @@ function handleLogout(){
            : <Link className='btn1 bg-gradient-to-r from-gray-900 to-gray-700' to='/signin'>
               Sign In
             </Link>}
+          <Link to='/admin/pricing' className='btn1 bg-gradient-to-r from-gray-900 to-gray-700' >
+              List Properpty
+            </Link>
           </div>
-
           <div className='toggle'>
             <button onClick={() => setNavList(!navList)}>{navList ? <i className='fa fa-times'></i> : <i className='fa fa-bars'></i>}</button>
           </div>

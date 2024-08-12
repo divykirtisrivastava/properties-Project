@@ -6,7 +6,6 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Main from './clientComponents/Main.jsx'
 import Feachered from './clientComponents/Feachered.jsx'
 import Propertiex from './clientComponents/Propertiex.jsx'
-import Pricing from './clientComponents/Pricing.jsx'
 import AdminLayout from './AdminLayout.jsx'
 import AdminTable from './adminPannel/AdminTable.jsx'
 import ViewProduct from './adminPannel/ViewProduct.jsx'
@@ -16,6 +15,10 @@ import ClientLogin from './clientComponents/ClientLogin.jsx'
 import ClientRegister from './clientComponents/ClientRegister.jsx'
 import WishList from './clientComponents/WishList.jsx'
 import Wishlistview from './clientComponents/Wishlistview.jsx'
+import Pricing from './clientComponents/Pricing.jsx'
+import Protected from './adminPannel/Protected.jsx'
+import AdminRegister from './adminPannel/AdminRegister.jsx'
+import AdminLogin from './adminPannel/AdminLogin.jsx'
 
 let router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +27,6 @@ let router = createBrowserRouter(
       <Route path='' element={<Main/>}/>
       <Route path='/about' element={<Feachered/>}/>
       <Route path='/properties' element={<Propertiex/>}/>
-      <Route path='/pricing' element={<Pricing/>}/>
       <Route path='/signin' element={<ClientLogin/>}/>
       <Route path='/register' element={<ClientRegister/>}/>
       <Route path='/wishlist' element={<WishList/>}/>
@@ -33,10 +35,21 @@ let router = createBrowserRouter(
     </Route>
 
     <Route path='/admin' element={<AdminLayout/>}>
-      <Route path='' element={<AdminTable/>} />
+      <Route path='' element={
+        <Protected>
+          <AdminTable/>
+       </Protected>
+      } />
       <Route path='/admin/view/:id' element={<ViewProduct/>} />
       <Route path='/admin/update/:id' element={<UpdateProduct/>} />
-      <Route path='/admin/addProduct' element={<AddProperty/>} />
+      <Route path='/admin/addProduct' element={
+        <Protected>
+          <AddProperty/>
+        </Protected>
+      } />
+      <Route path='/admin/adminRegister' element={<AdminRegister/>}/>
+      <Route path='/admin/adminLogin' element={<AdminLogin/>}/>
+      <Route path='/admin/pricing' element={<Pricing/>}/>
     </Route>
 
     </>

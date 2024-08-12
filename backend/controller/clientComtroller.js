@@ -74,6 +74,7 @@ function createUserWishListtable(tname){
 
 exports.verify =async (req, res)=>{
     let token = req.headers['authorization'].split(" ")[1]
+    console.log("client token:- "+token)
     if(token){
       await  jwt.verify(token, process.env.JWT_SECRET, (err, decode)=>{
             if(err) throw err

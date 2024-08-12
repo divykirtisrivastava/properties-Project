@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import axios from 'axios'
 import {useNavigate, useParams} from 'react-router-dom'
+import UserContext from '../context/UserContext'
 
 export default function UpdateProduct() {
   let navigation = useNavigate()
+  let {adminAuth} = useContext(UserContext)
+
   let [data, setdata] = useState({
     name:'',
     location:'',
@@ -19,8 +22,11 @@ setdata({...data, [e.target.name]: e.target.value})
 
   let {id} = useParams()
   async function getpropertylistyId(){
-    let result = await axios.get(`http://localhost:3000/api/getpropertylistyId/${id}`)
+    if(adminAuth.adminName){
+      let adminName = adminAuth.adminName.email.split('@')[0]  
+    let result = await axios.get(`http://localhost:3000/api/getpropertylistyId/${id}/${adminName}`)
     setdata(result.data[0])
+    }
   }
   useEffect(()=>{
     getpropertylistyId()

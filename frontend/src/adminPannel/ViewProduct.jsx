@@ -90,17 +90,23 @@
 
 
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import UserContext from '../context/UserContext';
 
 export default function ViewProduct() {
   let {id} = useParams()
   const [data, setData] = useState([]);
   const [imageIndices, setImageIndices] = useState({});
 
+  let {adminAuth} = useContext(UserContext)
+
+
   async function getpropertylist() {
-    let result = await axios.get(`http://localhost:3000/api/getpropertylistyId/${id}`);
+   if(adminAuth.adminName){
+    let adminName = adminAuth.adminName.email.split('@')[0]  
+    let result = await axios.get(`http://localhost:3000/api/getadminpropertylistyId/${id}/${adminName}`);
 
     const final = result.data.map(item => {
       if (typeof item.image === 'string') {
@@ -118,10 +124,12 @@ export default function ViewProduct() {
     }, {});
     setImageIndices(indices);
   }
+}
+
 
   useEffect(() => {
     getpropertylist();
-  }, []);
+  }, [adminAuth]);
 
   const prevImage = (id) => {
     setImageIndices(prevIndices => ({
@@ -149,6 +157,8 @@ export default function ViewProduct() {
 
     return () => intervals.forEach(interval => clearInterval(interval));
   }, [data]);
+
+
 
   return (
     <>
