@@ -8,7 +8,7 @@ router.post('/propertylistSave/:adminName',upload.array('images', 4), propertyli
 router.get('/getpropertylist', propertylistController.getpropertylist)
 router.get('/getadminpropertylist/:adminName', propertylistController.getadminpropertylist)
 
-router.delete('/deletepropertylist/:id/:adminname', propertylistController.deletepropertylist)
+router.delete('/deletepropertylist/:id/:adminName', propertylistController.deletepropertylist)
 
 router.get('/getpropertylistyId/:id', propertylistController.getpropertylistById)
 router.get('/getadminpropertylistyId/:id/:adminName', propertylistController.getadminpropertylistById)

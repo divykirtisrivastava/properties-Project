@@ -15,10 +15,12 @@ export default function AddProperty() {
   let [price, setprice] = useState("")
   let [type, settype] = useState("")
   let [images, setImage] = useState(null)
+  let [worn, setWorn] = useState('')
 async function handleSubmit(e){
   e.preventDefault()
 
-  let data = new FormData()
+  if(price < 20000){
+    let data = new FormData()
   data.append('name', name)
   data.append('location', location)
   data.append('category', category)
@@ -39,6 +41,9 @@ async function handleSubmit(e){
   })
  }
  navigation('/admin')
+  }else{
+    setWorn("* price must be less then 20000")
+  }
 }
 
   return (
@@ -102,7 +107,7 @@ async function handleSubmit(e){
                 <div>
                   <label htmlFor="name" className="text-base font-medium text-gray-900">
                     {' '}
-                    Price{' '}
+                    Price{' '} <span className='text-red-600 ml-3'>{worn}</span>
                   </label>
                   <div className="mt-2">
                     <input

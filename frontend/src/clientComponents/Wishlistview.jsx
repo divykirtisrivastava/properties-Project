@@ -152,56 +152,56 @@ export default function Wishlistview() {
 
   return (
     <>
-        <div className='flex w-full justify-center h-[100vh] items-center'>
-          <div className="max-w-sm rounded shadow-lg m-4">
+        <div className='h-[700px] relative mt-[0px]'>
 
-          <div className='relative w-full h-[350px]'>
             {data.map((data, index) => {
               // const { id, image, category, location, name, price, type } = val;
               const currentImageIndex = imageIndices[id] || 0;
               return (
-                <div className='box shadow' key={index}>
-                  <div className='img relative w-full h-64'>
+                <div className='relative h-full bg-black' key={index}>
+                  
                     <img
                       src={`http://localhost:3000/${data.image[currentImageIndex]}`}
                       alt={`Property Image ${currentImageIndex + 1}`}
                       // className={`carousel-image ${currentImageIndex === index ? 'active' : ''} w-full h-full object-cover absolute top-0 left-0`}
-                      className={`carousel-image w-full h-full object-cover absolute top-0 left-0`}
+                      className={`carousel-image w-full h-[60%] object-cover  top-0 left-0`}
                       style={{ transition: 'opacity 1s ease-in-out' }}
                     />
                     <button
                       onClick={() => prevImage(data.id)}
-                      className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2"
+                      className="absolute left-0 top-1/4 transform -translate-y-1/2 bg-gray-800 text-white p-2"
                     >
                       &lt;
                     </button>
                     <button
                       onClick={() => nextImage(data.id)}
-                      className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2"
+                      className="absolute right-0 top-1/4 transform -translate-y-1/2 bg-gray-800 text-white p-2"
                     >
                       &gt;
                     </button>
-                  </div>
-                  <div className="px-6 py-4">
-       <div className="font-bold text-xl mb-2">{data.name}</div>
-       <p className="text-gray-700 text-base">
-         Location: {data.location}
+                  
+                  <div className="flex flex-col justify-evenly items-center h-[40%] text-2xl text-white font-bold">
+       <div className="">{data.name}</div>
+       <p className="">
+         Location: {data.location} 📌
        </p>
-       <p className="text-gray-700 text-base">
+       <p className="">
          Category: {data.category}
        </p>
-       <p className="text-gray-700 text-base">
+       <p className="">
          Price: {data.price}
        </p>
-       <p className="text-gray-700 text-base">
+       <p className="">
          Type: {data.type}
        </p>
-     </div>
+       <p className="bg-red-600 p-2 rounded-2xl">
+         Contact Number: 7345783412
+       </p>
+                  </div>
                 </div>
               );
             })}
-          </div>
-        </div>
+
       </div>
     </>
   );

@@ -8,11 +8,11 @@ export default function Home() {
       <section className='hero'>
         <div className='container'>
         <div className='heading'>
-        <h1 style={{fontSize: '35px', color:'black',fontWeight:'600'}} >Search Your Next Home </h1>
-        <p style={{color:"white"}}>Find new & featured property located in your local city.</p>
+        <h1 style={{fontSize: '65px', color:'black',fontWeight:'600'}} >Search Your Next Home </h1>
+        <p style={{color:"black", fontSize:'30px'}}>Find new & featured property located in your local city.</p>
       </div>
 
-          <form className='flexbox formBox'>
+          {/* <form className='flexbox formBox'>
             <div className='box'>
               <span>City/Street</span>
               <input type='text' placeholder='Location' />
@@ -31,7 +31,7 @@ export default function Home() {
             <button className='btn1 bg-gradient-to-r from-gray-900 to-gray-700'>
              <Search/>
             </button>
-          </form>
+          </form> */}
         </div>
       </section>
     </div>

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import UserContext from '../context/UserContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FileHeart, Heart, HeartIcon, HeartOff, Heater, LucideHeart } from 'lucide-react';
 
 export default function Propertiex() {
@@ -91,12 +91,12 @@ useEffect(()=>{
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
           </div>
 
-          <div className='content grid3 mtop'>
+          <div className='content grid3 mtop' >
             {data.map((val, index) => {
               const { id, image, category, location, name, price, type } = val;
               const currentImageIndex = imageIndices[id] || 0;
               return (
-                <div className='box shadow' key={index}>
+                <div className='box shadow' key={index} style={{paddingBottom:'20px'}}>
                   <div className='img relative w-full h-64'>
                     <img
                       src={`http://localhost:3000/${image[currentImageIndex]}`}
@@ -128,7 +128,7 @@ useEffect(()=>{
                   </div>
                   <div className='button flexbox'>
                     <div>
-                      <button className='btn1 bg-gradient-to-r from-gray-900 to-gray-700' >Rs. {Number(price.replace(/[^0-9.-]+/g,"")).toLocaleString('En-In')}</button> <label htmlFor=''>/sqft</label>
+                      <Link to={`/viewProperty/${id}`} className='btn1 bg-gradient-to-r from-gray-900 to-gray-700' >Rs. {Number(price.replace(/[^0-9.-]+/g,"")).toLocaleString('En-In')}</Link> <label htmlFor=''>/sqft</label>
                     </div>
                     <span>{type}</span>
                   </div>
